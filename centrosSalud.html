@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Pueba final</title>
+    <script>
+        var dojoConfig = {
+            async: true
+        };
+    </script>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.18/esri/css/esri.css">
+    <script src="http://js.arcgis.com/3.18/"></script>
+
+    <link rel="stylesheet" href="css/layout.css"/>
+
+    <script>
+      
+        require(["esri/map", 
+        "esri/layers/FeatureLayer",
+        "esri/geometry/Extent",
+        "dojo/domReady!"], 
+        function (Map, FeatureLayer, Extent) {
+
+            var extentInitial = new Extent({
+            "xmin": -415811.796930644,
+            "ymin": 4919170.17081106,
+            "xmax":  -400757.003653631,
+            "ymax": 4930449.88246117,
+            "spatialReference": {
+              "wkid": 102100
+            }
+            });
+            var map = new Map("divMap", {
+                basemap: "streets",
+                extent: extentInitial,
+                zoom: 12
+            });
+            
+            var centros = new FeatureLayer ("https://services8.arcgis.com/BtkRLT3YBKaVGV3g/arcgis/rest/services/CENTROS_SALUD_CSCG/FeatureServer/0");
+            map.addLayers([centros]);
+         
+
+
+        });
+        
+
+    </script>
+</head>
+
+<body>
+
+<div id="divMap"></div>
+
+</body>
+</html>
